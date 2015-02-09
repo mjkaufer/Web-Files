@@ -38,7 +38,7 @@ for(var key in linkList){
 			{
 				t: "a",
 				T: key,
-				attributes: {
+				a: {
 					"href":linkList[key]
 				}
 			}
@@ -59,7 +59,7 @@ Begin JSML Below
 		c:[
 			{
 				t:"link",
-				attributes:{
+				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
 					"href":"style.css"
