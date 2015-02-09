@@ -1,3 +1,13 @@
+var classList = [
+	"English 11 Honors",
+	"AP Physics C",
+	"Artificial Intelligence 2",
+	"Web App Development",
+	"AP US History",
+	"German 3",
+	"BC Calculus"
+]
+
 var accomplishmentList = [
 	"Created JSML",
 	"Won Best Virtual Reality at MHacksV",
@@ -18,12 +28,26 @@ var accomplishments = {
 	c:[]
 }
 
+var classes = {
+	t:"ul",
+	c:[]
+}
+
 for(var i = 0; i < accomplishmentList.length; i++){
 	var add = {
 		t: "li",
 		T:accomplishmentList[i]
 	}
 	accomplishments.c.push(add);
+}
+
+
+for(var i = 0; i < classList.length; i++){
+	var add = {
+		t: "li",
+		T:classList[i]
+	}
+	classes.c.push(add);
 }
 
 var links = {
@@ -74,6 +98,11 @@ Begin JSML Below
 				t:"h1",
 				T:"Hi! I'm Matthew"
 			},
+			{
+				t:"h2",
+				T:"My Classes"
+			},
+			classes,
 			{
 				t:"h2",
 				T:"Things I've Done"
