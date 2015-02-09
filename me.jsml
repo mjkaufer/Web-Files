@@ -1,0 +1,91 @@
+var accomplishmentList = [
+	"Created JSML",
+	"Won Best Virtual Reality at MHacksV",
+	"Won 2nd Place, Best Yodle Hack, Best Internet Hack at HackRU",
+	"Won Top 10 at HackTheNorth",
+	"Won Best Use of SendGrid at HackRU",
+	"Won Best Educational Hack at HackMIT+Blueprint"
+];
+
+var linkList = {
+	"My GitHub":"http://github.com/mjkaufer",
+	"JSML":"http://github.com/mjkaufer/JSML"
+}
+
+var accomplishments = {
+	t:"ul",
+	c:[]
+}
+
+for(var i = 0; i < accomplishmentList.length; i++){
+	var add = {
+		t: "li",
+		T:accomplishmentList[i]
+	}
+	accomplishments.c.push(add);
+}
+
+var links = {
+	t: "ul",
+	c:[]
+}
+
+for(var key in linkList){
+	var add = {
+		t:"li",
+		c:[
+			{
+				t: "a",
+				T: key,
+				attributes: {
+					"href":linkList[key]
+				}
+			}
+		]
+	}
+
+	links.c.push(add);
+}
+
+/*
+Begin JSML Below
+*/
+
+[
+
+	{
+		t: "head",
+		c:[
+			{
+				t:"link",
+				attributes:{
+					"rel":"stylesheet",
+					"type":"text/css",
+					"href":"style.css"
+				}
+			}
+		]
+	},
+	{
+		t: "body",
+		c:[
+			{
+				t:"h1",
+				T:"Hi! I'm Matthew"
+			},
+			{
+				t:"h2",
+				T:"Things I've Done"
+			},
+			accomplishments,
+			{
+				t:"h2",
+				T:"Things You Should Check Out"
+			},
+			links,
+
+		]
+	}
+
+
+]
