@@ -16,7 +16,7 @@ for(var i = 1; i < labCount+1; i++){
 		t:"a",
 		T:"Lab " + i,
 		a:{
-			href:"./Lab" + i + ".html"
+			href:"./labs/Lab" + i + ".html"
 		}
 	});
 
@@ -24,7 +24,7 @@ for(var i = 1; i < labCount+1; i++){
 		t:"a",
 		T:"(src)",
 		a:{
-			href:"./Lab" + i + ".jsml"
+			href:"./labs/Lab" + i + ".jsml"
 		}
 	});
 
