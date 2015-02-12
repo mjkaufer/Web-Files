@@ -1,0 +1,59 @@
+[
+
+	{
+		t: "head",
+		c:[
+			{
+				t:"link",
+				a:{
+					"rel":"stylesheet",
+					"type":"text/css",
+					"href":"style.css"
+				}
+			}
+		]
+	},
+	{
+		t: "body",
+		c:[
+			{
+				t:"h1",
+				T:"List The States!"
+			},
+			{
+				t:"p",
+				T:"Time",
+				c:{
+					t:"span",
+					T:"5:00",
+					a:{
+						id:"time"
+					}
+				}
+			},
+			{
+				t:"input",
+				a:{
+					type:"text",
+					id:"input"
+				},
+			},
+			{
+				t:"button",
+				T:"Submit",
+				a:{
+					id:"next"
+				}
+			},
+			{
+				t:"script",
+				a:{
+					src:"Lab2.js"
+				}
+			}
+
+		]
+	}
+
+
+]
