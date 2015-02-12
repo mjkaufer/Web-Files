@@ -20,7 +20,7 @@ var accomplishmentList = [
 var linkList = {
 	"My GitHub":"http://github.com/mjkaufer",
 	"JSML":"http://github.com/mjkaufer/JSML",
-	"This Page's Source":"https://raw.githubusercontent.com/mjkaufer/Web-Files/master/me.jsml"
+	"This Page's Source":"//tjhsst.edu/~2016mkaufer/Lab1.jsml"
 }
 
 var accomplishments = {
