@@ -8,7 +8,7 @@
 				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
-					"href":"style.css"
+					"href":"style2.css"
 				}
 			}
 		]
@@ -22,12 +22,23 @@
 			},
 			{
 				t:"p",
-				T:"Time",
+				T:"Time - ",
 				c:{
 					t:"span",
 					T:"5:00",
 					a:{
 						id:"time"
+					}
+				}
+			},
+			{
+				t:"p",
+				T:"Remaining States - ",
+				c:{
+					t:"span",
+					T:"50",
+					a:{
+						id:"remaining"
 					}
 				}
 			},
@@ -43,6 +54,23 @@
 				T:"Submit",
 				a:{
 					id:"next"
+				}
+			},
+			{
+				t:"br",
+			},
+			{
+				t:"button",
+				T:"Start",
+				a:{
+					id:"start"
+				}
+			},
+			{
+				t:"p",
+				T:"",
+				a:{
+					id:"message"
 				}
 			},
 			{
