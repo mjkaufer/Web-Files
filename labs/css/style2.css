@@ -23,3 +23,72 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+
+.hurray{
+    -webkit-animation: colorRotate 1s infinite linear; /* Chrome, Safari, Opera */
+    animation: colorRotate 1s infinite linear;
+
+}
+
+/*Rotation colors taken from http://stackoverflow.com/questions/19165364/cycling-animation-of-rainbow-coloured-text*/
+@-webkit-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+        -webkit-transform: rotate(0deg);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+        -webkit-transform: rotate(60deg);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+        -webkit-transform: rotate(120deg);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+        -webkit-transform: rotate(180deg);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+        -webkit-transform: rotate(240deg);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+        -webkit-transform: rotate(300deg);
+    }
+    to {
+        color: rgb(255, 0, 0);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+        transform: rotate(0deg);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+        transform: rotate(60deg);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+        transform: rotate(120deg);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+        transform: rotate(180deg);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+        transform: rotate(240deg);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+        transform: rotate(300deg);
+    }
+    to {
+        color: rgb(255, 0, 0);
+        transform: rotate(360deg);
+    }
+}

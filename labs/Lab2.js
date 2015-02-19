@@ -153,9 +153,14 @@ function check(fromkey){
       var win = "You win!";
       document.getElementById('message').innerHTML = win;
       setTimeout(function(){
+        document.body.className = "hurray";  
+      }, 1000)
+      
+      setTimeout(function(){
         if(document.getElementById('message').innerHTML == win)
           document.getElementById('message').innerHTML = "";
-      }, 2000)
+        document.body.className = "";
+      }, 5000)
 
     }
     input.focus();
