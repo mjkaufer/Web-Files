@@ -67,7 +67,7 @@ document.getElementById('start').onclick = function(){
   return finish()
 }
 
-function checkGuess(guess){
+function checkGuess(guess, fromkey){
 	guess = guess.trim().toLowerCase();
 	if(tempStates.indexOf(guess) == -1)
 		if(permaStates.indexOf(guess) != -1){//if the state has already been listed
@@ -78,7 +78,9 @@ function checkGuess(guess){
 			};
     }
 		else{//guess is not a state
-      flashCol("red");
+      console.log(fromkey);
+      if(!fromkey)
+        flashCol("red");
 			return {
 				bool:false,
 				message:guess + " is not a state!"
@@ -140,8 +142,8 @@ function finish(){//show score, etc.
 }
 
 
-function check(){
-    var result = checkGuess(input.value);
+function check(fromkey){
+    var result = checkGuess(input.value, fromkey);
     document.getElementById('remaining').innerHTML = tempStates.length;
     if(result.bool)
       input.value = "";
@@ -162,10 +164,11 @@ function check(){
 
 document.getElementById('next').onclick = check;
 
-input.onkeydown = function(e){
-  if(e.which == 13){//user hit enter
-    check();      
-  }
+input.onkeyup = function(e){
+  var fromkey = (e.which != 13);
+    // if(e.which == 13){//user hit enter
+  check(fromkey);
+  // }
 }
 
 function setCountingDown(bool){
