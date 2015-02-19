@@ -62,11 +62,8 @@ var input = document.getElementById('input');
 reset();
 
 document.getElementById('start').onclick = function(){
-  if(!countingDown){
-    this.innerHTML = "Stop";
+  if(!countingDown)
     return start();
-  }
-  this.innerHTML = "Start";
   return finish()
 }
 
@@ -109,6 +106,7 @@ function timeToString(){
 var countdown;
 
 function start(){
+  document.getElementById('start').innerHTML = "(S)top";
   tempStates = permaStates.slice();
   time = 5*60;
   setCountingDown(true);
@@ -135,14 +133,13 @@ function start(){
 }
 
 function finish(){//show score, etc.
+  document.getElementById('start').innerHTML = "(S)tart"
   clearInterval(countdown);
   reset();
 }
 
 
-
-input.onkeydown = function(e){
-  if(e.which == 13){//user hit enter
+function check(){
     var result = checkGuess(input.value);
     document.getElementById('remaining').innerHTML = tempStates.length;
     if(result.bool)
@@ -158,7 +155,14 @@ input.onkeydown = function(e){
       }, 2000)
 
     }
-      
+
+}
+
+document.getElementById('next').onclick = check;
+
+input.onkeydown = function(e){
+  if(e.which == 13){//user hit enter
+    check();      
   }
 }
 

@@ -55,9 +55,10 @@
 			},
 			{
 				t:"button",
-				T:"Submit",
+				T:"Submi(t)",
 				a:{
-					id:"next"
+					id:"next",
+					accesskey:"t"
 				}
 			},
 			{
@@ -65,9 +66,10 @@
 			},
 			{
 				t:"button",
-				T:"Start",
+				T:"(S)tart",
 				a:{
-					id:"start"
+					id:"start",
+					accesskey:"s"
 				}
 			},
 			{
