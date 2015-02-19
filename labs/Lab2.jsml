@@ -8,8 +8,12 @@
 				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
-					"href":"style2.css"
+					"href":"css/style2.css"
 				}
+			},
+			{
+				t:"title",
+				T:"50 States Game"
 			}
 		]
 	},

@@ -44,6 +44,10 @@ for(var i = 1; i < labCount+1; i++){
 					"type":"text/css",
 					"href":"style.css"
 				}
+			},
+			{
+				t:"title",
+				T:"Labs"
 			}
 		]
 	},

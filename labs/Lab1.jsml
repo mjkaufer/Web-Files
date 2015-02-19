@@ -20,7 +20,7 @@ var accomplishmentList = [
 var linkList = {
 	"My GitHub":"http://github.com/mjkaufer",
 	"JSML":"http://github.com/mjkaufer/JSML",
-	"This Page's Source":"//tjhsst.edu/~2016mkaufer/Lab1.jsml"
+	"This Page's Source":"Lab1.jsml"
 }
 
 var accomplishments = {
@@ -86,8 +86,12 @@ Begin JSML Below
 				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
-					"href":"style.css"
+					"href":"css/style.css"
 				}
+			},
+			{
+				t:"title",
+				T:"About Me"
 			}
 		]
 	},
@@ -99,20 +103,26 @@ Begin JSML Below
 				T:"Hi! I'm Matthew"
 			},
 			{
-				t:"h2",
-				T:"My Classes"
+				t:"div",
+				children:[
+					{
+						t:"h2",
+						T:"My Second Semester Classes"
+					},
+					classes,
+					{
+						t:"h2",
+						T:"Things I've Done"
+					},
+					accomplishments,
+					{
+						t:"h2",
+						T:"Things You Should Check Out"
+					},
+					links,
+
+				]
 			},
-			classes,
-			{
-				t:"h2",
-				T:"Things I've Done"
-			},
-			accomplishments,
-			{
-				t:"h2",
-				T:"Things You Should Check Out"
-			},
-			links,
 
 		]
 	}
