@@ -9,3 +9,17 @@ textarea, input {
 	padding: 2px 1px;
 	border-radius: .25em;
 }
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
