@@ -110,6 +110,7 @@ function start(){
   tempStates = permaStates.slice();
   time = 5*60;
   setCountingDown(true);
+  input.focus();
   update();
   countdown = setInterval(function(){
     time-=1;
@@ -155,6 +156,7 @@ function check(){
       }, 2000)
 
     }
+    input.focus();
 
 }
 
@@ -170,6 +172,9 @@ function setCountingDown(bool){
   countingDown = bool;
   document.getElementById('input').disabled = !bool
   document.getElementById('next').disabled = !bool
+
+  if(document.getElementById('next').disabled)
+    document.getElementById('next').focus();
 }
 
 var colorInterval;
