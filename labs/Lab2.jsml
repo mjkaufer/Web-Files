@@ -37,6 +37,17 @@
 			},
 			{
 				t:"p",
+				T:"Best Time - ",
+				c:{
+					t:"span",
+					T:"5:00",
+					a:{
+						id:"highschore"
+					}
+				}
+			},
+			{
+				t:"p",
 				T:"Remaining States - ",
 				c:{
 					t:"span",

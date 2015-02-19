@@ -57,6 +57,8 @@ var tempStates;
 var time;
 var countingDown;
 
+var best = localStorage.getItem("best") || 5*60;
+
 var input = document.getElementById('input');
 
 reset();
@@ -65,6 +67,16 @@ document.getElementById('start').onclick = function(){
   if(!countingDown)
     return start();
   return finish()
+}
+
+function highScoreUpdate(){
+
+  if(time != 5*60 && time > best){//did better
+    best = time;
+  }
+  localStorage.setItem("best", best);
+  document.getElementById('highscore').innerHTML = timeToString(5*60 - best);
+
 }
 
 function checkGuess(guess, fromkey){
@@ -96,9 +108,11 @@ function checkGuess(guess, fromkey){
 
 }
 
-function timeToString(){
-  var minutes = parseInt(time/60);
-  var seconds = time % 60;
+function timeToString(t){
+  if(!t)
+    t = time;
+  var minutes = parseInt(t/60);
+  var seconds = t % 60;
   seconds = (seconds < 10 ? "0" : "") + seconds;
 
   return minutes + ":" + seconds;
@@ -136,6 +150,7 @@ function start(){
 }
 
 function finish(){//show score, etc.
+  highScoreUpdate();
   document.getElementById('start').innerHTML = "(S)tart"
   clearInterval(countdown);
   reset();
@@ -149,8 +164,9 @@ function check(fromkey){
       input.value = "";
 
     if(tempStates.length == 0){
+      
+      var win = "You win! Completed in " + timeToString(5*60 - time) + "!";
       finish();
-      var win = "You win!";
       document.getElementById('message').innerHTML = win;
       setTimeout(function(){
         document.body.className = "hurray";  
