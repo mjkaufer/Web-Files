@@ -78,7 +78,7 @@ function checkGuess(guess, fromkey){
 			};
     }
 		else{//guess is not a state
-      console.log(fromkey);
+
       if(!fromkey)
         flashCol("red");
 			return {
