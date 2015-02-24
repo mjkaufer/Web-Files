@@ -1,4 +1,4 @@
-var title = "Name the Capitals"
+var title = "Name the Capitals";
 
 [
 
@@ -85,7 +85,7 @@ var title = "Name the Capitals"
 			{
 				t:"script",
 				a:{
-					src:"Lab2.js"
+					src:"Lab3.js"
 				}
 			}
 
