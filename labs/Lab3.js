@@ -1,115 +1,64 @@
-var STATES = [//will not change, used for reference
-  "alabama",
-  "alaska",
-  "arizona",
-  "arkansas",
-  "california",
-  "colorado",
-  "connecticut",
-  "delaware",
-  "florida",
-  "georgia",
-  "hawaii",
-  "idaho",
-  "illinois",
-  "indiana",
-  "iowa",
-  "kansas",
-  "kentucky",
-  "louisiana",
-  "maine",
-  "maryland",
-  "massachusetts",
-  "michigan",
-  "minnesota",
-  "mississippi",
-  "missouri",
-  "montana",
-  "nebraska",
-  "nevada",
-  "new hampshire",
-  "new jersey",
-  "new mexico",
-  "new york",
-  "north carolina",
-  "north dakota",
-  "ohio",
-  "oklahoma",
-  "oregon",
-  "pennsylvania",
-  "rhode island",
-  "south carolina",
-  "south dakota",
-  "tennessee",
-  "texas",
-  "utah",
-  "vermont",
-  "virginia",
-  "washington",
-  "west virginia",
-  "wisconsin",
-  "wyoming"
-]
-
-var ABBREVIATIONS = {
-  "AL":"alabama",
-  "AK":"alaska",
-  "AZ":"arizona",
-  "AR":"arkansas",
-  "CA":"california",
-  "CO":"colorado",
-  "CT":"connecticut",
-  "DE":"delaware",
-  "FL":"florida",
-  "GA":"georgia",
-  "HI":"hawaii",
-  "ID":"idaho",
-  "IL":"illinois",
-  "IN":"indiana",
-  "IA":"iowa",
-  "KS":"kansas",
-  "KY":"kentucky",
-  "LA":"louisiana",
-  "ME":"maine",
-  "MD":"maryland",
-  "MA":"massachusetts",
-  "MI":"michigan",
-  "MN":"minnesota",
-  "MS":"mississippi",
-  "MO":"missouri",
-  "MT":"montana",
-  "NE":"nebraska",
-  "NV":"nevada",
-  "NH":"new hampshire",
-  "NJ":"new jersey",
-  "NM":"new mexico",
-  "NY":"new york",
-  "NC":"north carolina",
-  "ND":"north dakota",
-  "OH":"ohio",
-  "OK":"oklahoma",
-  "OR":"oregon",
-  "PA":"pennsylvania",
-  "RI":"rhode island",
-  "SC":"south carolina",
-  "SD":"south dakota",
-  "TN":"tennessee",
-  "TX":"texas",
-  "UT":"utah",
-  "VT":"vermont",
-  "VA":"virginia",
-  "WA":"washington",
-  "WV":"west virginia",
-  "WI":"wisconsin",
-  "WY":"wyoming"
+var CAPMAP = {//will not change, used for reference
+  "alabama":"montgomery",
+  "alaska":"juneau",
+  "arizona":"phoenix",
+  "arkansas":"little rock",
+  "california":"sacramento",
+  "colorado":"denver",
+  "connecticut":"hartford",
+  "delaware":"dover",
+  "florida":"tallahassee",
+  "georgia":"atlanta",
+  "hawaii":"honolulu",
+  "idaho":"boise",
+  "illinois":"springfield",
+  "indiana":"indianapolis",
+  "iowa":"des moines",
+  "kansas":"topeka",
+  "kentucky":"frankfort",
+  "louisiana":"baton rouge",
+  "maine":"augusta",
+  "maryland":"annapolis",
+  "massachusetts":"boston",
+  "michigan":"lansing",
+  "minnesota":"saint paul",
+  "mississippi":"jackson",
+  "missouri":"jefferson city",
+  "montana":"helena",
+  "nebraska":"lincoln",
+  "nevada":"carson city",
+  "new hampshire":"concord",
+  "new jersey":"trenton",
+  "new mexico":"santa fe",
+  "new york":"albany",
+  "north carolina":"raleigh",
+  "north dakota":"bismarck",
+  "ohio":"columbus",
+  "oklahoma":"oklahoma city",
+  "oregon":"salem",
+  "pennsylvania":"harrisburg",
+  "rhode island":"providence",
+  "south carolina":"columbia",
+  "south dakota":"pierre",
+  "tennessee":"nashville",
+  "texas":"austin",
+  "utah":"salt lake city",
+  "vermont":"montpelier",
+  "virginia":"richmond",
+  "washington":"olympia",
+  "west virginia":"charleston",
+  "wisconsin":"madison",
+  "wyoming":"cheyenne"
 }
 
-var tempStates;
+var keys = Object.keys(CAPMAP);//list of all states, which we'll randomize and use to find keys and stuff later
+
+var timeAlotted = 10;
 
 var time;
 var countingDown;
 
-// var best = localStorage.getItem("best") || 5*60;
+var score = 0;
 
 var input = document.getElementById('input');
 
@@ -121,50 +70,24 @@ document.getElementById('start').onclick = function(){
   return finish()
 }
 
-function highScoreUpdate(){
-
-  if(time != 5*60 && time > best){//did better
-    best = time;
-  }
-  localStorage.setItem("best", best);
-  document.getElementById('highscore').innerHTML = timeToString(5*60 - best);
-
-}
-
-function isUppercase(phrase){
-  return phrase.toUpperCase() == phrase;
-}
-
 function checkGuess(guess, fromkey){
-  if(guess in ABBREVIATIONS)
-    guess = ABBREVIATIONS[guess];//if the user inputted a state abbreviation, we change guess
-	else
-    guess = guess.trim().toLowerCase();
-  
-	if(tempStates.indexOf(guess) == -1)
-		if(STATES.indexOf(guess) != -1){//if the state has already been listed
-      flashCol("blue");
-			return {
-				bool:false,
-				message:"Already listed " + guess + "!"
-			};
+  var state = keys[startIndex];
+	
+  if(CAPMAP[state] == guess.toLowerCase()){//they guessed right
+    flashCol("green")
+    return {
+      bool:true,
+      message:"Correct! " + guess + " is a state!"
     }
-		else{//guess is not a state
+  }
 
-      if(!fromkey)
-        flashCol("red");
-			return {
-				bool:false,
-				message:guess + " is not a state!"
-			};
-    }
-	//else, guess is an unnamed state
-	tempStates.splice(tempStates.indexOf(guess), 1);//remove guess from list if it's correct
-  flashCol("green")
+
+  if(!fromkey)
+    flashCol("red");
 	return {
-		bool:true,
-		message:"Correct! " + guess + " is a state!"
-	}
+		bool:false,
+		message:guess + " is not a state!"
+	};
 
 }
 
@@ -180,37 +103,50 @@ function timeToString(t){
 
 
 var countdown;
+var startIndex = -1;
+
+function next(){
+  startIndex++;
+  document.getElementById('remaining').innerHTML = keys.length - startIndex;
+  input.value = "";
+  if(startIndex == keys.length)//done
+    return alert("Done");//TODO: Prettify, add score
+
+  time = timeAlotted;
+  updateClock();
+
+  document.getElementById('state').innerHTML = keys[startIndex];
+}
 
 function start(){
+  startIndex = -1;
+  score = 0;
+  document.getElementById('score').innerHTML = score;
+  keys.sort(function(){//randomize keys
+    return 0.5-Math.random();
+  });
+
+  next();
+
   document.getElementById('start').innerHTML = "(S)top";
-  tempStates = STATES.slice();
-  time = 5*60;
+  
+  time = timeAlotted;
   setCountingDown(true);
   input.focus();
-  update();
+  updateClock();
   countdown = setInterval(function(){
     time-=1;
-    update();
+    updateClock();
 
     if(time == 0){
-      var failure = "You lose!";
-      
-      document.getElementById('message').innerHTML = failure;
-      setTimeout(function(){
-        if(document.getElementById('message').innerHTML == failure)
-          document.getElementById('message').innerHTML = "";
-      }, 2000)
-
-      var finalStates = tempStates.slice();
-      console.log(finalStates);
-      finish();
+      next();
     }
       
   }, 1000)
 }
 
 function finish(){//show score, etc.
-  // highScoreUpdate();
+  // highScoreupdateClock();
   document.getElementById('start').innerHTML = "(S)tart"
   clearInterval(countdown);
   reset();
@@ -219,26 +155,29 @@ function finish(){//show score, etc.
 
 function check(fromkey){
     var result = checkGuess(input.value, fromkey);
-    document.getElementById('remaining').innerHTML = tempStates.length;
-    if(result.bool)
+    
+    if(result.bool){
       input.value = "";
-
-    if(tempStates.length == 0){
-      
-      var win = "You win! Completed in " + timeToString(5*60 - time) + "!";
-      finish();
-      document.getElementById('message').innerHTML = win;
-      setTimeout(function(){
-        document.body.className = "hurray";  
-      }, 1000)
-      
-      setTimeout(function(){
-        if(document.getElementById('message').innerHTML == win)
-          document.getElementById('message').innerHTML = "";
-        document.body.className = "";
-      }, 5000)
-
+      score++;
+      document.getElementById('score').innerHTML = score;
+      next();
     }
+      
+
+      
+      // var win = "You win! Completed in " + timeToString(5*60 - time) + "!";
+      // finish();
+      // document.getElementById('message').innerHTML = win;
+      // setTimeout(function(){
+      //   document.body.className = "hurray";  
+      // }, 1000)
+      
+      // setTimeout(function(){
+      //   if(document.getElementById('message').innerHTML == win)
+      //     document.getElementById('message').innerHTML = "";
+      //   document.body.className = "";
+      // }, 5000)
+
     input.focus();
 
 }
@@ -283,16 +222,17 @@ function flashCol(col){
 
 }
 
-function update(){
+function updateClock(){
     document.getElementById('time').innerHTML = timeToString();
 }
 
 function reset(){
 
-  time = 5*60;
-  tempStates = STATES.slice();
+  time = timeAlotted;
   setCountingDown(false)
-  update();
-  document.getElementById('remaining').innerHTML = STATES.length;
+  updateClock();
+  document.getElementById('remaining').innerHTML = keys.length;
+
+  start();
 
 }

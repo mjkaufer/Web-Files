@@ -10,7 +10,7 @@ var title = "Name the Capitals";
 				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
-					"href":"css/style.css"
+					"href":"css/style2.css"
 				}
 			},
 			{
@@ -39,12 +39,34 @@ var title = "Name the Capitals";
 			},
 			{
 				t:"p",
-				T:"Remaining States - ",
+				T:"Remaining Capitals - ",
 				c:{
 					t:"span",
 					T:"50",
 					a:{
 						id:"remaining"
+					}
+				}
+			},
+			{
+				t:"p",
+				T:"Score: ",
+				c:{
+					t:"span",
+					T:"0",
+					a:{
+						id:"score"
+					}
+				}
+			},
+			{
+				t:"p",
+				T:"What is the capital of ",
+				c:{
+					t:"span",
+					T:"...",
+					a:{
+						id:"state"
 					}
 				}
 			},
