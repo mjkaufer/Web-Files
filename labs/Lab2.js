@@ -1,4 +1,4 @@
-var permaStates = [//will not change, used for reference
+var STATES = [//will not change, used for reference
   "alabama",
   "alaska",
   "arizona",
@@ -51,6 +51,58 @@ var permaStates = [//will not change, used for reference
   "wyoming"
 ]
 
+var ABBREVIATIONS = {
+  "AL":"alabama",
+  "AK":"alaska",
+  "AZ":"arizona",
+  "AR":"arkansas",
+  "CA":"california",
+  "CO":"colorado",
+  "CT":"connecticut",
+  "DE":"delaware",
+  "FL":"florida",
+  "GA":"georgia",
+  "HI":"hawaii",
+  "ID":"idaho",
+  "IL":"illinois",
+  "IN":"indiana",
+  "IA":"iowa",
+  "KS":"kansas",
+  "KY":"kentucky",
+  "LA":"louisiana",
+  "ME":"maine",
+  "MD":"maryland",
+  "MA":"massachusetts",
+  "MI":"michigan",
+  "MN":"minnesota",
+  "MS":"mississippi",
+  "MO":"missouri",
+  "MT":"montana",
+  "NE":"nebraska",
+  "NV":"nevada",
+  "NH":"new hampshire",
+  "NJ":"new jersey",
+  "NM":"new mexico",
+  "NY":"new york",
+  "NC":"north carolina",
+  "ND":"north dakota",
+  "OH":"ohio",
+  "OK":"oklahoma",
+  "OR":"oregon",
+  "PA":"pennsylvania",
+  "RI":"rhode island",
+  "SC":"south carolina",
+  "SD":"south dakota",
+  "TN":"tennessee",
+  "TX":"texas",
+  "UT":"utah",
+  "VT":"vermont",
+  "VA":"virginia",
+  "WA":"washington",
+  "WV":"west virginia",
+  "WI":"wisconsin",
+  "WY":"wyoming"
+}
 
 var tempStates;
 
@@ -79,10 +131,18 @@ function highScoreUpdate(){
 
 }
 
+function isUppercase(phrase){
+  return phrase.toUpperCase() == phrase;
+}
+
 function checkGuess(guess, fromkey){
-	guess = guess.trim().toLowerCase();
+  if(guess in ABBREVIATIONS)
+    guess = ABBREVIATIONS[guess];//if the user inputted a state abbreviation, we change guess
+	else
+    guess = guess.trim().toLowerCase();
+  
 	if(tempStates.indexOf(guess) == -1)
-		if(permaStates.indexOf(guess) != -1){//if the state has already been listed
+		if(STATES.indexOf(guess) != -1){//if the state has already been listed
       flashCol("blue");
 			return {
 				bool:false,
@@ -123,7 +183,7 @@ var countdown;
 
 function start(){
   document.getElementById('start').innerHTML = "(S)top";
-  tempStates = permaStates.slice();
+  tempStates = STATES.slice();
   time = 5*60;
   setCountingDown(true);
   input.focus();
@@ -230,9 +290,9 @@ function update(){
 function reset(){
 
   time = 5*60;
-  tempStates = permaStates.slice();
+  tempStates = STATES.slice();
   setCountingDown(false)
   update();
-  document.getElementById('remaining').innerHTML = permaStates.length;
+  document.getElementById('remaining').innerHTML = STATES.length;
 
 }
