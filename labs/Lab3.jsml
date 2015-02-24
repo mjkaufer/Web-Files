@@ -1,3 +1,5 @@
+var title = "Name the Capitals"
+
 [
 
 	{
@@ -8,12 +10,12 @@
 				a:{
 					"rel":"stylesheet",
 					"type":"text/css",
-					"href":"css/style2.css"
+					"href":"css/style.css"
 				}
 			},
 			{
 				t:"title",
-				T:"50 States Game"
+				T: title
 			}
 		]
 	},
@@ -22,30 +24,19 @@
 		c:[
 			{
 				t:"h1",
-				T:"List The States!"
+				T: title
 			},
 			{
 				t:"p",
 				T:"Time - ",
 				c:{
 					t:"span",
-					T:"5:00",
+					T:"0:05",
 					a:{
 						id:"time"
 					}
 				}
 			},
-			// {
-			// 	t:"p",
-			// 	T:"Best Time - ",
-			// 	c:{
-			// 		t:"span",
-			// 		T:"5:00",
-			// 		a:{
-			// 			id:"highscore"
-			// 		}
-			// 	}
-			// },
 			{
 				t:"p",
 				T:"Remaining States - ",

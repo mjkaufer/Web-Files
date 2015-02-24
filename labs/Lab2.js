@@ -109,7 +109,7 @@ var tempStates;
 var time;
 var countingDown;
 
-var best = localStorage.getItem("best") || 5*60;
+// var best = localStorage.getItem("best") || 5*60;
 
 var input = document.getElementById('input');
 
@@ -210,7 +210,7 @@ function start(){
 }
 
 function finish(){//show score, etc.
-  highScoreUpdate();
+  // highScoreUpdate();
   document.getElementById('start').innerHTML = "(S)tart"
   clearInterval(countdown);
   reset();
