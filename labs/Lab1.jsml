@@ -103,6 +103,12 @@ Begin JSML Below
 				T:"Hi! I'm Matthew"
 			},
 			{
+				t:"img",
+				a:{
+					src:"./img/me.jpg"
+				}
+			},
+			{
 				t:"div",
 				children:[
 					{
