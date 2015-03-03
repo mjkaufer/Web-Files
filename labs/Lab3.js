@@ -53,16 +53,21 @@ var CAPMAP = {//will not change, used for reference
 
 var keys = Object.keys(CAPMAP);//list of all states, which we'll randomize and use to find keys and stuff later
 
-var timeAlotted = 10;
+var time = timeAlotted = 10;
 
-var time;
+updateClock();
+
 var countingDown;
+
 
 var score = 0;
 
 var input = document.getElementById('input');
+setCountingDown(false);
+// reset();
 
-reset();
+start();
+finish();
 
 document.getElementById('start').onclick = function(){
   if(!countingDown)
@@ -109,13 +114,29 @@ function next(){
   startIndex++;
   document.getElementById('remaining').innerHTML = keys.length - startIndex;
   input.value = "";
-  if(startIndex == keys.length)//done
-    return alert("Done");//TODO: Prettify, add score
+  if(startIndex == keys.length){//done
 
-  time = timeAlotted;
-  updateClock();
+      var win = "You win! Your score was " + score + "/" + keys.length;
+      finish();
+      document.getElementById('message').innerHTML = win;
+      setTimeout(function(){
+        document.body.className = "hurray";  
+      }, 1000)
+      
+      setTimeout(function(){
+        document.body.className = "";
+      }, 2000)
+    finish();
+    
 
-  document.getElementById('state').innerHTML = keys[startIndex];
+  } else {
+    time = timeAlotted;
+    updateClock();
+
+    document.getElementById('state').innerHTML = keys[startIndex];  
+  }
+
+  
 }
 
 function start(){
@@ -125,6 +146,10 @@ function start(){
   keys.sort(function(){//randomize keys
     return 0.5-Math.random();
   });
+
+  document.getElementById('message').innerHTML = "";
+  document.getElementById('score').innerHTML = "0";
+  document.body.className = "";
 
   next();
 
@@ -147,8 +172,10 @@ function start(){
 
 function finish(){//show score, etc.
   // highScoreupdateClock();
-  document.getElementById('start').innerHTML = "(S)tart"
+  document.getElementById('start').innerHTML = "(S)tart";
+  document.getElementById('state').innerHTML = "...";
   clearInterval(countdown);
+  setCountingDown(false);
   reset();
 }
 
@@ -229,10 +256,10 @@ function updateClock(){
 function reset(){
 
   time = timeAlotted;
-  setCountingDown(false)
+  
   updateClock();
   document.getElementById('remaining').innerHTML = keys.length;
 
-  start();
+  // start();
 
 }
