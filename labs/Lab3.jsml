@@ -30,7 +30,7 @@ var title = "Name the Capitals";
 				t:"p",
 				T:"Time - ",
 				c:{
-					t:"span",
+					t:"b",
 					T:"0:05",
 					a:{
 						id:"time"

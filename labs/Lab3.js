@@ -253,6 +253,8 @@ function flashCol(col){
 
 function updateClock(){
     document.getElementById('time').innerHTML = timeToString();
+    var newColor = "hsl(" + parseInt(120 / Math.max(timeAlotted - time, 1)) + ", 75%, 40%)";
+    document.getElementById('time').style.color = newColor;
 }
 
 function reset(){
