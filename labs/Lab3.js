@@ -166,6 +166,7 @@ function start(){
 
     if(time == 0){
       next();
+      flashCol("red");
     }
       
   }, 1000)
