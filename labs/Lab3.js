@@ -79,7 +79,7 @@ function checkGuess(guess, fromkey){
   var state = keys[startIndex];
 	
   // if(CAPMAP[state] == guess.toLowerCase()){//they guessed right
-  if(new RegExp("^" + CAPMAP[state]).test(guess.toLowerCase())){//they guessed right
+  if(new RegExp("^" + CAPMAP[state]).test(guess.toLowerCase().trim())){//they guessed right
     flashCol("green")
     return {
       bool:true,
