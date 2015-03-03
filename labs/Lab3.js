@@ -212,7 +212,7 @@ function check(fromkey){
 
 document.getElementById('next').onclick = check;
 
-input.onkeyup = function(e){
+input.onkeyup = input.onchange = function(e){
   var fromkey = (e.which != 13);
     // if(e.which == 13){//user hit enter
   check(fromkey);
