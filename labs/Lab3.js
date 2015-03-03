@@ -21,7 +21,7 @@ var CAPMAP = {//will not change, used for reference
   "maryland":"annapolis",
   "massachusetts":"boston",
   "michigan":"lansing",
-  "minnesota":"saint paul",
+  "minnesota":"(st\. paul)|(st paul)|(saint paul)",
   "mississippi":"jackson",
   "missouri":"jefferson city",
   "montana":"helena",
@@ -78,7 +78,8 @@ document.getElementById('start').onclick = function(){
 function checkGuess(guess, fromkey){
   var state = keys[startIndex];
 	
-  if(CAPMAP[state] == guess.toLowerCase()){//they guessed right
+  // if(CAPMAP[state] == guess.toLowerCase()){//they guessed right
+  if(new RegExp("^" + CAPMAP[state]).test(guess.toLowerCase())){//they guessed right
     flashCol("green")
     return {
       bool:true,
