@@ -2,7 +2,27 @@ var labCount = 3;
 
 var labs = {
 	t:"ul",
-	c:[]
+	c:[
+		{
+			t:"li",
+			c:[
+				{
+					t:"a",
+					T:"Home Page",
+					a:{
+						href:"./"
+					}
+				},
+				{
+					t:"a",
+					T:"(src)",
+					a:{
+						href:"./index.jsml"
+					}
+				}
+			]
+		}
+	]
 }
 
 
