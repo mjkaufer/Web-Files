@@ -1,0 +1,85 @@
+var title = "Lab 5";
+
+var songList = ["Radio Ga Ga", "Killer Queen", "We Will Rock You", "Don't Stop Me Now", "Bicycle Race"]
+
+var songs = [];
+
+for(var i in songList){
+	songs.push({
+		t:"option",
+		T:songList[i],
+		a:{
+			value: songList[i]
+		}
+	})
+}
+
+
+/*
+Begin JSML Below
+*/
+
+[
+
+	{
+		t: "head",
+		c:[
+			{
+				t:"link",
+				a:{
+					"rel":"stylesheet",
+					"type":"text/css",
+					"href":"css/style.css"
+				}
+			},
+			{
+				t:"title",
+				T:title
+			}
+		]
+	},
+	{
+		t: "body",
+		c:[
+			{
+				t:"h1",
+				T:title
+			},
+			{
+				t: "form",
+				c:[
+					{
+						t: "input",
+						T: "Goo Goo",
+						a:{
+							value:"goo goo",
+							type:"radio",
+							name:"allweneed"
+						}
+					},
+					{
+						t: "input",
+						T: "Ga Ga",
+						a:{
+							value:"ga ga",
+							type:"radio",
+							name:"allweneed"
+						}
+					}
+				]
+			},
+			{
+				t: "select",
+				c: songs
+			},
+			{
+				t:"script",
+				a:{
+					src:"Lab5.js"
+				}
+			}
+		]
+	}
+
+
+]
