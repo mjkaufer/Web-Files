@@ -7,9 +7,14 @@
 	<body>
 		<h1>Lab 5</h1>
 		<form>
-			<input value="goo goo" type="radio" name="allweneed">Goo Goo</input>
-			<input value="ga ga" type="radio" name="allweneed">Ga Ga</input>
+			<input value="goo goo" type="radio" name="allweneed" onchange="radioClick(this)">Goo Goo</input>
+			<input value="ga ga" type="radio" name="allweneed" onchange="radioClick(this)">Ga Ga</input>
 		</form>
+		<select onchange="updateSecond()">
+			<option value="Queen">Queen</option>
+			<option value="Foo Fighters">Foo Fighters</option>
+			<option value="Cage the Elephant">Cage the Elephant</option>
+		</select>
 		<select>
 			<option value="Radio Ga Ga">Radio Ga Ga</option>
 			<option value="Killer Queen">Killer Queen</option>

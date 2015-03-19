@@ -1,15 +1,32 @@
 var title = "Lab 5";
 
-var songList = ["Radio Ga Ga", "Killer Queen", "We Will Rock You", "Don't Stop Me Now", "Bicycle Race"]
+var map = {
+	"Queen":["Radio Ga Ga", "Killer Queen", "We Will Rock You", "Don't Stop Me Now", "Bicycle Race"],
+	"Foo Fighters":["Something from Nothing", "Everlong", "Monkey Wrench", "Back and Forth"],
+	"Cage the Elephant":["Ain't No Rest for the Wicked", "Cigarette Daydreams", "Aberdeen"]
+}
+var keys = Object.keys(map);
+var radClick = "radioClick(this)"
 
 var songs = [];
+var artists = [];
 
-for(var i in songList){
+for(var i in keys){
+	artists.push({
+		t:"option",
+		T:keys[i],
+		a:{
+			value: keys[i]
+		}
+	})
+}
+
+for(var i in map["Queen"]){
 	songs.push({
 		t:"option",
-		T:songList[i],
+		T:map["Queen"][i],
 		a:{
-			value: songList[i]
+			value: map["Queen"][i]
 		}
 	})
 }
@@ -54,7 +71,8 @@ Begin JSML Below
 						a:{
 							value:"goo goo",
 							type:"radio",
-							name:"allweneed"
+							name:"allweneed",
+							onchange: radClick
 						}
 					},
 					{
@@ -63,10 +81,18 @@ Begin JSML Below
 						a:{
 							value:"ga ga",
 							type:"radio",
-							name:"allweneed"
+							name:"allweneed",
+							onchange: radClick
 						}
 					}
 				]
+			},
+			{
+				t: "select",
+				a:{
+					onchange: "updateSecond()"
+				},
+				c: artists
 			},
 			{
 				t: "select",
