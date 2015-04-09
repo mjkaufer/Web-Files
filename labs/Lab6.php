@@ -10,7 +10,7 @@
     $file = file_get_contents("dict.txt"); 
 
     
-    $pattern = '/' . $firstLetter . '\w{0,'. $remainingLength . '}/'; 
+    $pattern = '/\b' . $firstLetter . '\w{0,'. $remainingLength . '}\s/'; 
     echo $maxLength . "|" . $firstLetter . "|" . $remainingLength . "|" . $pattern;
     preg_match_all($pattern, $file, $matches ); 
     print_r($matches); 
