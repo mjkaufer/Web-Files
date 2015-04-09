@@ -1,0 +1,111 @@
+var br = {
+	t: "br"
+}
+
+firstLetterOptions = [];
+
+for(var i = 97; i < 97+26; i++) {//a-z
+
+	var ch = String.fromCharCode(i);
+
+	firstLetterOptions	.push({
+		t: "option",
+		T: ch,
+		a:{
+			value:ch
+		}
+	})
+}
+
+maxLengthOptions = []
+
+for(var i = 1; i <= 13; i++) {//1-13
+	maxLengthOptions.push({
+		t: "option",
+		T: i,
+		a:{
+			value:i
+		}
+	})
+}
+
+var firstLetter = {
+	t: "select",
+	a:{
+		name:"firstLetter"
+	},
+	c: firstLetterOptions
+};
+
+var maxLength = {
+	t: "select",
+	a:{
+		name:"maxLength"
+	},
+	c: maxLengthOptions
+};
+
+////
+
+var title = "Scrabble Helper";
+
+[
+	{
+		t: "head",
+		c:[
+			{
+				t:"link",
+				a:{
+					"rel":"stylesheet",
+					"type":"text/css",
+					"href":"css/style.css"
+				}
+			},
+			{
+				t:"title",
+				T: title
+			}
+		]
+	},
+	{
+		t: "body",
+		c:[
+			{
+				t:"h1",
+				T: title
+			},
+			{
+				t: "form",
+				a:{
+					action: "Lab6.php",
+					method: "POST"
+				},
+				c:[
+					"First Letter",
+					firstLetter,
+					br,
+					"Max Letters",
+					maxLength,
+					br,
+					{
+						t: "button",
+						T: "Find Words",
+						a:{
+							type:"submit"
+						}
+					},
+
+				]
+			},
+			{
+				t:"script",
+				a:{
+					src:"Lab6.js"
+				}
+			}
+
+		]
+	}
+
+
+]

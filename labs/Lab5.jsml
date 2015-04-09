@@ -84,7 +84,7 @@ Begin JSML Below
 							name:"allweneed",
 							onchange: radClick
 						}
-					}
+					},
 				]
 			},
 			{

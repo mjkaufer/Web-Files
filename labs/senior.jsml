@@ -1,0 +1,39 @@
+var name = "Jay";
+
+function fac(n){
+	if(n == 0)
+		return 1;
+
+	return n * fac(n-1)
+}
+
+function newNumberElement(n){
+	return {
+		t: "p",
+		T: n
+	}
+}
+
+var listOfStuff = {
+	t: "div",
+	c: []
+}
+
+for(var i = 0; i < 1000; i++)
+	listOfStuff.c.push(newNumberElement(i));
+
+[
+	{
+		t: "p",
+		T: name,
+	},
+	{
+		t: "p",
+		T: "dorem ipsum",
+	},
+	{
+		t: "p"
+,		T: "8! is " + fac(8),
+	},
+	listOfStuff
+]
