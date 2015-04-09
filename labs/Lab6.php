@@ -5,13 +5,16 @@
 
     $remainingLength = intval($maxLength) - 1;
     
-    echo $remainingLength . "\n";
+    // echo $remainingLength . "\n";
 
     $file = file_get_contents("dict.txt"); 
 
     
     $pattern = '/\b' . $firstLetter . '\w{0,'. $remainingLength . '}\s/'; 
-    echo $maxLength . "|" . $firstLetter . "|" . $remainingLength . "|" . $pattern;
+    // echo $maxLength . "|" . $firstLetter . "|" . $remainingLength . "|" . $pattern;
     preg_match_all($pattern, $file, $matches ); 
-    print_r($matches); 
+
+	foreach($matches[0] as $word) {
+		echo $word . "\r\n";
+	}
 ?>
