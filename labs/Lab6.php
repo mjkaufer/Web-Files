@@ -6,13 +6,10 @@
 
 	//(?=.*$letter{num,})
 
-	for ($i = 1; $i <= 8; $i++) {
-    	$letter = $_GET[$i . ""];
-
-    	if($letter != "*"){//not a wild card
-    		$letters[] = $letter;
-    	}
+	foreach($_GET as $i => $letter){
+    	$letters[] = $letter;
 	}
+
 
 	$map = array_count_values($letters);
 

@@ -105,7 +105,8 @@ var title = "Scrabble Helper";
 				t: "form",
 				a:{
 					action: "Lab6.php",
-					method: "GET"
+					method: "GET",
+					id: "form"
 				},
 				c:[
 					"Fill in your letters",
