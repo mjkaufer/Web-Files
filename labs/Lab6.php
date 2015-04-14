@@ -24,7 +24,7 @@
 	// }
 
 	foreach ($map as $letter => $freq){
-		$regex .= "(?=.*" . $letter . "{" . $freq . "})";
+		$regex .= "(?=(.*" . $letter . "){" . $freq . "})";
 	}
 
 
