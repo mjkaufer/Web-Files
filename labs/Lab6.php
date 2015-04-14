@@ -43,13 +43,13 @@
 		preg_match_all($pattern, $file, $matches ); 
 
 		if(count($matches[0]) > 0){
-			echo "<h2>" . $len . " Letters Long</h2><br>";
+			echo "<h2>" . $len . " Letters Long</h2>";
 
 			foreach($matches[0] as $word) {
 				echo $word . "\r\n";
 			}
 
-			echo "<br>";
+			echo "<hr>";
 		}
 
 	}
