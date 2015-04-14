@@ -19,7 +19,7 @@ for(var i = 97; i < 97+26; i++) {//a-z
 
 maxLengthOptions = []
 
-for(var i = 1; i <= 13; i++) {//1-13
+for(var i = 2; i <= 13; i++) {//numbers 2-13
 	maxLengthOptions.push({
 		t: "option",
 		T: i,
