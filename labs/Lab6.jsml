@@ -2,13 +2,21 @@ var br = {
 	t: "br"
 }
 
-firstLetterOptions = [];
+letterOptions = [];
+
+letterOptions.push({
+	t: "option",
+	T: "*",
+	a:{
+		value:"*"
+	}
+})
 
 for(var i = 97; i < 97+26; i++) {//a-z
 
 	var ch = String.fromCharCode(i);
 
-	firstLetterOptions	.push({
+	letterOptions.push({
 		t: "option",
 		T: ch,
 		a:{
@@ -17,33 +25,52 @@ for(var i = 97; i < 97+26; i++) {//a-z
 	})
 }
 
-maxLengthOptions = []
+// maxLengthOptions = []
 
-for(var i = 2; i <= 13; i++) {//numbers 2-13
-	maxLengthOptions.push({
-		t: "option",
-		T: i,
-		a:{
-			value:i
-		}
-	})
+// for(var i = 2; i <= 13; i++) {//numbers 2-13
+// 	maxLengthOptions.push({
+// 		t: "option",
+// 		T: i,
+// 		a:{
+// 			value:i
+// 		}
+// 	})
+// }
+
+// var maxLength = {
+// 	t: "select",
+// 	a:{
+// 		name:"maxLength"
+// 	},
+// 	c: maxLengthOptions
+// };
+
+// var firstLetter = {
+// 	t: "select",
+// 	a:{
+// 		name:"firstLetter"
+// 	},
+// 	c: letterOptions
+// };
+
+var letters = {
+	t: "div",
+	c: []
 }
 
-var firstLetter = {
-	t: "select",
-	a:{
-		name:"firstLetter"
-	},
-	c: firstLetterOptions
-};
+for(var i = 1; i <= 8; i++){
+	var select = {
+		t: "select",
+		a:{
+			name:i,
+			id:i
+		},
+		c: letterOptions		
+	}
 
-var maxLength = {
-	t: "select",
-	a:{
-		name:"maxLength"
-	},
-	c: maxLengthOptions
-};
+	letters.c.push(select);
+}
+
 
 ////
 
@@ -81,11 +108,14 @@ var title = "Scrabble Helper";
 					method: "GET"
 				},
 				c:[
-					"First Letter",
-					firstLetter,
+					"Fill in your letters",
 					br,
-					"Max Letters",
-					maxLength,
+					"* Represents any character",
+					br,
+					letters,
+					br,
+					// "Max Letters",
+					// maxLength,
 					br,
 					{
 						t: "button",
