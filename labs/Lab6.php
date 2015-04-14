@@ -15,7 +15,7 @@
 	$uniques = count($map);
 	$regex = "";
 
-	foreach (map as $letter => $freq){
+	foreach ($map as $letter => $freq){
 		$regex += "(?=.*" . $letter . "{" . $freq . "})";
 	}
 
