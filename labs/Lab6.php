@@ -7,6 +7,8 @@
 	<body>
 	<?php 
 
+		$alphabet = "abcdefghijklmnopqrstuvwxyz";
+
 		function underline($word, $letters){
 			$retWord = $word;
 			foreach($letters as $letter){
@@ -23,7 +25,9 @@
 		//(?=.*$letter{num,})
 
 		foreach($_GET as $i => $letter){
-	    	$letters[] = $letter;
+			if(strrpos($alphabet, $letter) !== false && strlen($letter) == 1){//if the submitted letter _is_ a letter
+				$letters[] = $letter;
+			}
 		}
 
 
