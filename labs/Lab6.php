@@ -30,6 +30,10 @@
 			}
 		}
 
+		if(count($letters) == 0){//user didn't search for anything...
+			header("Location: ./Lab6.html");
+			exit();
+		}
 
 		$map = array_count_values($letters);
 
