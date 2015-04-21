@@ -1,4 +1,4 @@
-var labCount = 6;
+var labCount = 7;
 
 var labs = {
 	t:"ul",
@@ -25,18 +25,24 @@ var labs = {
 	]
 }
 
+var phpLabs = [6, 7];
 
-for(var i = 1; i < labCount+1; i++){
+for(var i = 1; i <= labCount; i++){
 	var li = {
 		t:"li",
 		c:[]
 	};
 
+	var isPHP = phpLabs.indexOf(i);
+
+	var suffix = isPHP ? ".php" : ".html";
+	var sourceSuffix = isPHP ? ".phps" : ".jsml";
+
 	li.c.push({
 		t:"a",
 		T:"Lab " + i,
 		a:{
-			href:"./labs/Lab" + i + ".html"
+			href:"./labs/Lab" + i + suffix
 		}
 	});
 
@@ -44,7 +50,7 @@ for(var i = 1; i < labCount+1; i++){
 		t:"a",
 		T:"(src)",
 		a:{
-			href:"./labs/Lab" + i + ".jsml"
+			href:"./labs/Lab" + i + sourceSuffix
 		}
 	});
 
