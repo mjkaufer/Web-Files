@@ -1,4 +1,4 @@
-var labCount = 7;
+var labCount = 8;
 
 var labs = {
 	t:"ul",
@@ -25,7 +25,7 @@ var labs = {
 	]
 }
 
-var phpLabs = [6, 7];
+var phpLabs = [6, 7, 8];
 
 for(var i = 1; i <= labCount; i++){
 	var li = {
