@@ -21,21 +21,21 @@
 					setup: subdirectory called pdfs
 					*/
 
-					$shellCommand = "sqlite3 lg.db 'select latex from data where id=\"" . $_GET["id"] . "\";' > " . $_GET["id"] . ".txt";
+					$textFile = $_GET["id"] . ".txt";
+
+					$shellCommand = "sqlite3 lg.db 'select latex from data where id=\"" . $_GET["id"] . "\";' > " . $textFile;
+
+					shell_exec($shellCommand);
 
 					$del = $db->prepare("delete from data where id=:id;");
 					$del->bindValue(':id', $_GET["id"], SQLITE3_TEXT);
 
 					$result = $del->execute();					
-					// shell_exec($shellCommand);
-
-					// echo $res;
-
 					$dirName = "pdfs";
 					$dir = $dirName . "/";
 
 
-					$convert = "pdflatex -output-directory=$dirName -aux-directory=$dirName " . $_GET["id"] . ".txt";
+					$convert = "pdflatex -output-directory=$dirName -aux-directory=$dirName " . $textFile;
 
 					shell_exec($convert);
 
@@ -59,14 +59,45 @@
 					    ob_clean();
 					    flush();
 					    readfile($file_name);
+					    // exit;
 
+						// header("X-Sendfile: $file_name");
+						// header("Content-type: application/octet-stream");
+						// header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+						// header("Location: http://google.com");
+						// header
+						// exit;
+
+
+
+						// shell_exec("rm " . $file_name);
 						shell_exec("rm " . $file . ".*");//removes all the pdflatex files created with it
 						exit;
-
+						// shell_exec("rm " . $file_name);
+						// shell_exec("rm " . $file_name);
 					} else {
 						echo "<p style='color:red;'>Invalid id. Perhaps someone has already looked at your file?</p>";
 					}
 
+					// $find = $db->prepare("select * from data where id=:id;");
+					// $find->bindValue(':id', $_GET["id"], SQLITE3_TEXT);
+
+					// $result = $find->execute();
+					// $info = $result->fetchArray();
+
+					// if(!$info){
+					// 	echo "<p style='color:red;'>Invalid id. Perhaps someone has already looked at your file?</p>";
+					// }
+					// else{
+					// 	echo "<hr>";
+					// 	echo "<pre>" . $info["latex"] . "</pre>";
+					// 	echo "<hr>";
+					// }
+
+					// $del = $db->prepare("delete from data where id=:id;");
+					// $del->bindValue(':id', $_GET["id"], SQLITE3_TEXT);
+
+					// $result = $del->execute();
 
 
 				}

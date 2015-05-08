@@ -1,4 +1,4 @@
-var labCount = 8;
+var labCount = 9;
 
 var labs = {
 	t:"ul",
