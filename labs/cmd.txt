@@ -1,0 +1,1 @@
+sqlite3 lg.db 'select latex from data where id="0deff366ba80347ae5a081abb7336f0e34831bfc77ca67bd45b596b27adf2c3e";'
