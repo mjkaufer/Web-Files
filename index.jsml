@@ -24,8 +24,9 @@ var labs = {
 		}
 	]
 }
+var miscFiles = ["Wastebin"];
 
-var phpLabs = [6, 7, 8];
+var phpLabs = [6, 7, 8, "Wastebin"];
 
 for(var i = 1; i <= labCount; i++){
 	var li = {
@@ -54,6 +55,39 @@ for(var i = 1; i <= labCount; i++){
 		}
 	});
 
+	labs.c.push(li)
+
+}
+labs.c.push({t:"hr"});
+
+for(var index in miscFiles){
+	var i = miscFiles[index]
+	var li = {
+		t:"li",
+		c:[]
+	};
+
+	var isPHP = phpLabs.indexOf(i);
+
+	var suffix = isPHP ? ".php" : ".html";
+	var sourceSuffix = isPHP ? ".phps" : ".jsml";
+
+	li.c.push({
+		t:"a",
+		T:"Misc Lab: " + i,
+		a:{
+			href:"./labs/" + i + suffix
+		}
+	});
+
+	li.c.push({
+		t:"a",
+		T:"(src)",
+		a:{
+			href:"./labs/" + i + sourceSuffix
+		}
+	});
+	
 	labs.c.push(li)
 
 }
