@@ -4,7 +4,7 @@
 		<title>Wastebin</title>
 	</head>
 	<body>
-		<h1>Lab 9 - Wastebin</h1>
+		<h1>Wastebin</h1>
 		<h3>Volatile Pastebin</h3>
 
 		<?php
