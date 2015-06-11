@@ -34,7 +34,7 @@ for(var i = 1; i <= labCount; i++){
 		c:[]
 	};
 
-	var isPHP = phpLabs.indexOf(i);
+	var isPHP = phpLabs.indexOf(i) >= 0;
 
 	var suffix = isPHP ? ".php" : ".html";
 	var sourceSuffix = isPHP ? ".phps" : ".jsml";

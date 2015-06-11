@@ -20,8 +20,10 @@
 					CREATE TABLE data (id TEXT NOT NULL UNIQUE, latex TEXT);
 					setup: subdirectory called pdfs
 					*/
+					$dirName = "pdfs";
+					$dir = $dirName . "/";
 
-					$textFile = $_GET["id"] . ".txt";
+					$textFile = $dir . $_GET["id"] . ".txt";
 
 					$shellCommand = "sqlite3 lg.db 'select latex from data where id=\"" . $_GET["id"] . "\";' > " . $textFile;
 
@@ -31,10 +33,7 @@
 					$del->bindValue(':id', $_GET["id"], SQLITE3_TEXT);
 
 					$result = $del->execute();					
-					$dirName = "pdfs";
-					$dir = $dirName . "/";
-
-
+					
 					$convert = "pdflatex -output-directory=$dirName -aux-directory=$dirName " . $textFile;
 
 					shell_exec($convert);
