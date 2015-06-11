@@ -58,6 +58,33 @@ for(var i = 1; i <= labCount; i++){
 	labs.c.push(li)
 
 }
+
+
+var li = {
+	t:"li",
+	c:[]
+};
+
+li.c.push({
+	t:"a",
+	T:"Final Project",
+	a:{
+		href:"http://www.kaufer.org/TabCollab"
+	}
+});
+
+li.c.push({
+	t:"a",
+	T:"(src)",
+	a:{
+		href:"http://github.com/mjkaufer/TabCollab"
+	}
+});
+
+labs.c.push(li)
+
+
+
 labs.c.push({t:"hr"});
 
 for(var index in miscFiles){
